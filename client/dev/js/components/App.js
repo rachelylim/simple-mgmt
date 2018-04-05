@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-require('../../scss/style.scss');
+
+import List from './list';
+import SideNav from './side-nav';
 
 class App extends Component {
   render() {
     return (
       <div>
-        hello world
+        <SideNav />
+        <List />
       </div>
     );
   }
