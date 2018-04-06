@@ -10,7 +10,7 @@ module Api
         if @task.save
           render json: @task, status: 201
         else
-          render json: { @task.errors.full_messages }, status: 422
+          render json: @task.errors.full_messages, status: 422
         end
       end
 
@@ -18,7 +18,9 @@ module Api
       end
 
       private
-
+      def task_params
+        params.permit(:name, :description, :deadline, :complete)
+      end
     end
   end
 end
