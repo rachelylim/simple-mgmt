@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'react-emotion';
 
 import { capitalize } from '../utils';
+import { TASK_FILTERS } from '../constants';
 
 import Button from '../elements/button';
 import Checkbox from '../elements/checkbox';
@@ -16,6 +17,12 @@ const Wrapper = styled.div`
 const FilterWrapper = styled.div`
   display: flex;
   align-items: center;
+  background-color: ${props => {
+    if (props.slug === 'completed') return 'green';
+    if (props.slug === 'due-soon') return 'orange';
+    if (props.slug === 'overdue') return 'red';
+    return 'white';
+  }}
 `;
 
 const FilterName = styled.p`
@@ -49,8 +56,8 @@ class SideNav extends Component {
       <Wrapper>
         <Button copy='+ Create New Task' onclick={this.props.openTaskCreator(true)} />
         <FilterHeader>Filters:</FilterHeader>
-        {['all', 'completed', 'due-soon', 'overdue'].map((slug, id) => (
-          <FilterWrapper key={id}>
+        {TASK_FILTERS.map((slug, id) => (
+          <FilterWrapper key={id} slug={slug}>
             <Checkbox onchange={this.filter(slug)} checked={this.state.filter === slug} />
             <FilterName>{capitalize(slug.split('-').join(' '))}</FilterName>
           </FilterWrapper>

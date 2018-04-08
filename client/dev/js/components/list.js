@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'react-emotion';
-import moment from 'moment';
 
 import Task from './task';
 
@@ -32,18 +31,11 @@ class List extends Component {
     let filteredTasks;
 
     if (filter === 'completed') {
-      filteredTasks = tasks.filter(task => !!task.complete);
+      filteredTasks = tasks.filter(task => task.complete);
     } else if (filter === 'due-soon') {
-      const today = moment(new Date()).format('YYYY-MM-DD');
-      let tomorrow = moment(new Date()).add(1, 'days').format('YYYY-MM-DD');
-
-      const tasksDueToday = tasks.filter(task => task.deadline === today);
-      const tasksDueTomorrow = tasks.filter(task => task.deadline === tomorrow);
-
-      filteredTasks = [...tasksDueTomorrow, ...tasksDueToday];
+      filteredTasks = tasks.filter(task => task.dueSoon);
     } else if (filter === 'overdue') {
-      const today = moment(new Date()).format('YYYY-MM-DD');
-      filteredTasks = tasks.filter(task => moment(task.deadline).isBefore(today));
+      filteredTasks = tasks.filter(task => task.overdue);
     } else {
       filteredTasks = tasks;
     }

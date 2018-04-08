@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  border: 1px solid black;
+  border: 3px solid ${props => props.color};
   border-radius: 4px;
   margin: 10px 0;
   padding: 15px;
@@ -28,7 +28,18 @@ const TaskName = styled.p`
 class Task extends Component {
   constructor(props) {
     super(props);
-    this.state = { selected: false };
+    this.state = {
+      selected: false,
+      color: this.determineTaskBorderColor(),
+    };
+  }
+
+  determineTaskBorderColor() {
+    const { complete, overdue, dueSoon } = this.props;
+    if (complete) return 'green';
+    if (overdue) return 'red';
+    if (dueSoon) return 'orange';
+    return 'gray';
   }
 
   renderSelectedMode() {
@@ -52,7 +63,7 @@ class Task extends Component {
 
   renderListMode() {
     return (
-      <Wrapper complete={this.props.complete}>
+      <Wrapper complete={this.props.complete} color={this.state.color}>
         <Checkbox onchange={this.updateTask} checked={this.props.complete} />
         <TaskName onClick={this.toggleSelection(true)}>{this.props.name}</TaskName>
       </Wrapper>

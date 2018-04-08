@@ -1,4 +1,6 @@
 import axios from 'axios';
+import moment from 'moment';
+
 import { API_URL } from '../constants';
 
 export const actionTypes = {
@@ -15,10 +17,24 @@ export function createTask(params) {
   };
 }
 
+function setTaskFilter(task) {
+  const today = moment(new Date()).format('YYYY-MM-DD');
+  let tomorrow = moment(new Date()).add(1, 'days').format('YYYY-MM-DD');
+
+  if (moment(task.deadline).isBefore(today)) {
+    return { ...task, overdue: true };
+  } else if (task.deadline === today || task.deadline === tomorrow) {
+    return { ...task, dueSoon: true };
+  } else {
+    return task;
+  }
+}
+
 export function setTasks() {
   return (dispatch) => {
     axios.get(`${API_URL}/tasks`)
-    .then(({ data: tasks }) => {
+    .then(({ data }) => {
+      const tasks = data.map(task => setTaskFilter(task));
       return dispatch({ type: actionTypes.SET_TASKS, tasks });
     });
   }
