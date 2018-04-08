@@ -13,11 +13,6 @@ const DateSaveWrapper = styled.div`
   align-items: baseline;
 `;
 
-const modalClass = css`
-  width: 500px;
-  border-radius: 4px;
-`;
-
 class CreateTaskModal extends Component {
   constructor(props) {
     super(props);
@@ -43,7 +38,7 @@ class CreateTaskModal extends Component {
 
   render() {
     return (
-      <Modal darkOverlay className={modalClass} closeModal={this.closeModal}>
+      <Modal darkOverlay closeModal={this.closeModal}>
         <h3>Create a new task</h3>
         <Input label='Name' name='name' type='text' placeholder='Required' />
         <TextArea label='Description' name='description' />

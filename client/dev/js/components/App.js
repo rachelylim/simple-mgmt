@@ -24,9 +24,7 @@ class App extends Component {
 
   componentWillMount() {
     if (!this.props.tasks.length) {
-      axios.get(`${API_URL}/tasks`).then(({ data: tasks }) => {
-        this.props.onSetTasks && this.props.onSetTasks(tasks);
-      });
+      this.props.onSetTasks && this.props.onSetTasks();
     }
   }
 
@@ -38,11 +36,15 @@ class App extends Component {
     this.props.onCreateTask && this.props.onCreateTask(params);
   }
 
+  updateTask = (id, params) => {
+    this.props.onUpdateTaskCompletion && this.props.onUpdateTaskCompletion(id, params);
+  }
+
   render() {
     return (
       <Wrapper>
         <SideNav openTaskCreator={this.toggleTaskCreator} />
-        <List tasks={this.props.tasks} />
+        <List tasks={this.props.tasks} updateTask={this.updateTask} />
         {this.state.creatingTask &&
           <CreateTaskModal
             closeModal={this.toggleTaskCreator(false)}

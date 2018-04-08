@@ -19,7 +19,13 @@ class List extends Component {
   renderTasks() {
     return (
       <TaskWrapper>
-        {this.props.tasks.map(task => <Task {...task} key={task.id} />)}
+        {this.props.tasks.map((task) => (
+          <Task
+            {...task}
+            key={task.id}
+            updateTask={this.props.updateTask}
+          />
+        ))}
       </TaskWrapper>
     )
   }

@@ -11,6 +11,8 @@ const Wrapper = styled.div`
   background-color: white;
   z-index: 30;
   overflow: scroll;
+  width: 500px;
+  border-radius: 4px;
 `;
 
 const DarkOverlay = styled.div`
@@ -62,7 +64,7 @@ class Modal extends Component {
 
   closeModal = (e) => {
     e.preventDefault();
-    this.props.closeModal && this.props.closeModal(false);
+    this.props.closeModal && this.props.closeModal();
   }
 
   render() {
