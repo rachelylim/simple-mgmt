@@ -3,6 +3,7 @@ import { API_URL } from '../constants';
 
 export const actionTypes = {
   SET_TASKS: 'SET_TASKS',
+  SET_FILTER: 'SET_FILTER',
 };
 
 export function createTask(params) {
@@ -30,4 +31,8 @@ export function updateTask(id, params) {
       dispatch(setTasks());
     });
   };
+}
+
+export function setFilter(filter) {
+  return dispatch => dispatch({ type: actionTypes.SET_FILTER, filter });
 }

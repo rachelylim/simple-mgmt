@@ -40,11 +40,23 @@ class App extends Component {
     this.props.onUpdateTaskCompletion && this.props.onUpdateTaskCompletion(id, params);
   }
 
+  setFilter = (filter) => {
+    this.props.onSetFilter && this.props.onSetFilter(filter);
+  }
+
   render() {
     return (
       <Wrapper>
-        <SideNav openTaskCreator={this.toggleTaskCreator} />
-        <List tasks={this.props.tasks} updateTask={this.updateTask} />
+        <SideNav
+          openTaskCreator={this.toggleTaskCreator}
+          setFilter={this.setFilter}
+          filter={this.props.filter}
+        />
+        <List
+          tasks={this.props.tasks}
+          updateTask={this.updateTask}
+          filter={this.props.filter}
+        />
         {this.state.creatingTask &&
           <CreateTaskModal
             closeModal={this.toggleTaskCreator(false)}
