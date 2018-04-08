@@ -2,7 +2,6 @@ import axios from 'axios';
 import { API_URL } from '../constants';
 
 export const actionTypes = {
-  ADD_TASK: 'ADD_TASK',
   SET_TASKS: 'SET_TASKS',
 };
 
@@ -10,7 +9,7 @@ export function createTask(params) {
   return (dispatch) => {
     axios.post(`${API_URL}/tasks`, params)
     .then(({ data: payload}) => {
-      dispatch({ type: actionTypes.ADD_TASK, payload });
+      dispatch(setTasks());
     });
   };
 }

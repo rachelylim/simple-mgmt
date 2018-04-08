@@ -16,14 +16,23 @@ class TaskDetailsModal extends Component {
     this.props.closeModal && this.props.closeModal();
   }
 
+  updateTask = () => {
+    this.props.updateTask && this.props.updateTask();
+    this.closeModal();
+  }
+
   render() {
+    const { complete, name, description, deadline } = this.props;
     return (
       <Modal darkOverlay closeModal={this.closeModal}>
-        <h3>{this.props.name}</h3>
-        <p>{this.props.description}</p>
+        <h3>{name}</h3>
+        <p>{description}</p>
         <DateCompleteWrapper>
-          <p>{this.props.date || 'No Deadline'}</p>
-          <Button copy='Mark Complete' />
+          <p>{deadline || 'No Deadline'}</p>
+          <Button
+            copy={`Mark ${complete ? 'Incomplete' : 'Complete'}`}
+            onclick={this.updateTask}
+          />
         </DateCompleteWrapper>
       </Modal>
     );

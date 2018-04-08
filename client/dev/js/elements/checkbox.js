@@ -3,7 +3,6 @@ import styled from 'react-emotion';
 
 class Checkbox extends Component {
   change = () => {
-    console.log('changing in checkbox')
     this.props.onchange && this.props.onchange();
   }
 

@@ -18,15 +18,18 @@ const TaskWrapper = styled.div`
 class List extends Component {
   renderTasks() {
     return (
-      <TaskWrapper>
-        {this.props.tasks.map((task) => (
-          <Task
-            {...task}
-            key={task.id}
-            updateTask={this.props.updateTask}
-          />
-        ))}
-      </TaskWrapper>
+      <div>
+        <h3>Things to do:</h3>
+        <TaskWrapper>
+          {this.props.tasks.map((task) => (
+            <Task
+              {...task}
+              key={task.id}
+              updateTask={this.props.updateTask}
+            />
+          ))}
+        </TaskWrapper>
+      </div>
     )
   }
 

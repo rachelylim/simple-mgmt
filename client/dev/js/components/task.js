@@ -11,14 +11,18 @@ const Wrapper = styled.div`
   justify-content: flex-start;
   border: 1px solid black;
   border-radius: 4px;
-  margin: 10px;
+  margin: 10px 0;
   padding: 15px;
 
   text-decoration: ${props => props.complete ? 'line-through' : 'none'};
 `;
 
 const TaskName = styled.p`
+  margin: 0;
+  padding: 10px;
   margin-left: 10px;
+  width: 100%;
+  cursor: pointer;
 `;
 
 class Task extends Component {
@@ -28,7 +32,13 @@ class Task extends Component {
   }
 
   renderSelectedMode() {
-    return <TaskDetailsModal {...this.props} closeModal={this.toggleSelection(false)} />;
+    return (
+      <TaskDetailsModal
+        {...this.props}
+        closeModal={this.toggleSelection(false)}
+        updateTask={this.updateTask}
+      />
+    );
   }
 
   toggleSelection = (selected) => () => {
