@@ -9,12 +9,26 @@ export const actionTypes = {
 export function createTask(params) {
   return (dispatch) => {
     axios.post(`${API_URL}/tasks`, params)
-    .then(({ data: newTask}) => {
-      dispatch({ type: actionTypes.ADD_TASK, newTask })
+    .then(({ data: payload}) => {
+      dispatch({ type: actionTypes.ADD_TASK, payload });
+    });
+  };
+}
+
+export function setTasks() {
+  return (dispatch) => {
+    axios.get(`${API_URL}/tasks`)
+    .then(({ data: tasks }) => {
+      return dispatch({ type: actionTypes.SET_TASKS, tasks });
     });
   }
 }
 
-export function setTasks(tasks) {
-  return { type: actionTypes.SET_TASKS, tasks };
+export function updateTask(id, params) {
+  return (dispatch) => {
+    axios.patch(`${API_URL}/tasks/${id}`, params)
+    .then(({ data: payload }) => {
+      dispatch(setTasks());
+    });
+  };
 }

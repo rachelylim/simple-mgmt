@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { createTask, setTasks } from './actions';
+import { createTask, setTasks, updateTask } from './actions';
 
 import App from '../components/App';
 
@@ -9,7 +9,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onCreateTask: params => dispatch(createTask(params)),
-  onSetTasks: tasks => dispatch(setTasks(tasks)),
+  onSetTasks: tasks => dispatch(setTasks()),
+  onUpdateTaskCompletion: (id, params) => dispatch(updateTask(id, params)),
 });
 
 const TaskListContainer = connect(mapStateToProps, mapDispatchToProps)(App);

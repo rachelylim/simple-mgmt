@@ -2,12 +2,11 @@ import {combineReducers} from 'redux';
 import { actionTypes } from './actions';
 
 const tasks = (state = [], action) => {
-  console.log('action', action)
   switch (action.type) {
     case actionTypes.ADD_TASK:
-      return [...state, action.newTask];
+      return [...state, ...action.payload];
     case actionTypes.SET_TASKS:
-      return [...state, ...action.tasks];
+      return [...action.tasks];
     default:
       return state;
   }
