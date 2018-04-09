@@ -18,7 +18,7 @@ const TaskWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  width: 80%;
+  width: 75%;
   text-decoration: ${props => props.complete ? 'line-through' : 'none'};
 `;
 
