@@ -63,9 +63,7 @@ class List extends Component {
   }
 
   renderEmptyState() {
-    return (
-      <h3>There are no tasks. Get to work!</h3>
-    );
+    return <h3>There are no tasks. Get to work!</h3>;
   }
 
   render() {
