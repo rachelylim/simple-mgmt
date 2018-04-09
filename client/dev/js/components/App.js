@@ -44,6 +44,10 @@ class App extends Component {
     this.props.onSetFilter && this.props.onSetFilter(filter);
   }
 
+  removeTask = (id) => {
+    this.props.onRemoveTask && this.props.onRemoveTask(id);
+  }
+
   render() {
     return (
       <Wrapper>
@@ -53,9 +57,10 @@ class App extends Component {
           filter={this.props.filter}
         />
         <List
+          filter={this.props.filter}
+          removeTask={this.removeTask}
           tasks={this.props.tasks}
           updateTask={this.updateTask}
-          filter={this.props.filter}
         />
         {this.state.creatingTask &&
           <CreateTaskModal

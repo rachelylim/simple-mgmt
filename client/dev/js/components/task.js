@@ -7,14 +7,23 @@ import Checkbox from '../elements/checkbox';
 
 const Wrapper = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   border: 3px solid ${props => props.color};
   border-radius: 4px;
   margin: 10px 0;
   padding: 15px;
+`;
+
+const TaskWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 
   text-decoration: ${props => props.complete ? 'line-through' : 'none'};
+`;
+
+const RemoveButton = styled.p`
+  cursor: pointer;
 `;
 
 const TaskName = styled.p`
@@ -61,11 +70,18 @@ class Task extends Component {
     this.props.updateTask && this.props.updateTask(id, { complete: !complete });
   }
 
+  removeTask = () => {
+    this.props.removeTask && this.props.removeTask(this.props.id);
+  }
+
   renderListMode() {
     return (
-      <Wrapper complete={this.props.complete} color={this.state.color}>
-        <Checkbox onchange={this.updateTask} checked={this.props.complete} />
-        <TaskName onClick={this.toggleSelection(true)}>{this.props.name}</TaskName>
+      <Wrapper color={this.state.color}>
+        <TaskWrapper complete={this.props.complete}>
+          <Checkbox onchange={this.updateTask} checked={this.props.complete} />
+          <TaskName onClick={this.toggleSelection(true)}>{this.props.name}</TaskName>
+        </TaskWrapper>
+        <RemoveButton onClick={this.removeTask}>[ Remove ]</RemoveButton>
       </Wrapper>
     );
   }

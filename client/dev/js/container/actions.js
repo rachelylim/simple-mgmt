@@ -52,3 +52,10 @@ export function updateTask(id, params) {
 export function setFilter(filter) {
   return dispatch => dispatch({ type: actionTypes.SET_FILTER, filter });
 }
+
+export function removeTask(id) {
+  return (dispatch) => {
+    axios.delete(`${API_URL}/tasks/${id}`)
+    .then(() => dispatch(setTasks()));
+  }
+}

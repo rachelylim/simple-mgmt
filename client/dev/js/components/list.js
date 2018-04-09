@@ -8,6 +8,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
+  overflow: scroll;
 `;
 
 const TaskWrapper = styled.div`
@@ -44,6 +45,7 @@ class List extends Component {
   }
 
   renderTasks() {
+    console.log('app: ', this.props.removeTask)
     return (
       <div>
         <h3>Things to do:</h3>
@@ -53,6 +55,7 @@ class List extends Component {
               {...task}
               key={task.id}
               updateTask={this.props.updateTask}
+              removeTask={this.props.removeTask}
             />
           ))}
         </TaskWrapper>

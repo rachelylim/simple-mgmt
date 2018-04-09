@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { createTask, setTasks, updateTask, setFilter } from './actions';
+import { createTask, setTasks, updateTask, setFilter, removeTask } from './actions';
 
 import App from '../components/App';
 
@@ -13,6 +13,7 @@ const mapDispatchToProps = dispatch => ({
   onSetTasks: tasks => dispatch(setTasks()),
   onUpdateTaskCompletion: (id, params) => dispatch(updateTask(id, params)),
   onSetFilter: filter => dispatch(setFilter(filter)),
+  onRemoveTask: id => dispatch(removeTask(id)),
 });
 
 const TaskListContainer = connect(mapStateToProps, mapDispatchToProps)(App);
