@@ -45,7 +45,6 @@ class List extends Component {
   }
 
   renderTasks() {
-    console.log('app: ', this.props.removeTask)
     return (
       <div>
         <h3>Things to do:</h3>

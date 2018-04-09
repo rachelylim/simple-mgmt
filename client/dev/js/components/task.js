@@ -39,12 +39,16 @@ class Task extends Component {
     super(props);
     this.state = {
       selected: false,
-      color: this.determineTaskBorderColor(),
+      color: this.determineTaskBorderColor(props),
     };
   }
 
-  determineTaskBorderColor() {
-    const { complete, overdue, dueSoon } = this.props;
+  componentWillReceiveProps(nextProps) {
+    this.setState({ color: this.determineTaskBorderColor(nextProps)});
+  }
+
+  determineTaskBorderColor(props) {
+    const { complete, overdue, dueSoon } = props;
     if (complete) return 'green';
     if (overdue) return 'red';
     if (dueSoon) return 'orange';

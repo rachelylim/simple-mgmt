@@ -17,15 +17,12 @@ const Wrapper = styled.div`
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      creatingTask: false,
-    };
+    this.state = { creatingTask: false };
   }
 
   componentWillMount() {
-    if (!this.props.tasks.length) {
-      this.props.onSetTasks && this.props.onSetTasks();
-    }
+    const { tasks, onSetTasks } = this.props;
+    if (!tasks.length) onSetTasks && onSetTasks();
   }
 
   toggleTaskCreator = (creatingTask) => () => {
