@@ -12,6 +12,7 @@ const Wrapper = styled.div`
   border-radius: 4px;
   margin: 10px 0;
   padding: 15px;
+  min-width: 500px;
 `;
 
 const TaskWrapper = styled.div`
