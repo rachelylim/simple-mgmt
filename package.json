@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack",
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "test": "jest"
   },
   "license": "ISC",
   "dependencies": {
@@ -20,7 +21,10 @@
     "cross-env": "^1.0.8",
     "css-loader": "^0.23.1",
     "emotion": "^9.1.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-15": "^1.0.5",
     "expect": "^1.20.1",
+    "jest": "^22.4.3",
     "moment": "^2.22.0",
     "node-libs-browser": "^1.0.0",
     "node-sass": "^3.8.0",
@@ -29,6 +33,7 @@
     "react-dom": "^15.1.0",
     "react-emotion": "^9.1.1",
     "react-redux": "^4.4.5",
+    "react-test-renderer": "^15.6.1",
     "redux": "^3.5.2",
     "redux-logger": "^2.6.1",
     "redux-promise": "^0.5.3",
@@ -44,5 +49,17 @@
     "babel-plugin-react-transform": "^2.0.2",
     "babel-preset-stage-0": "^6.5.0",
     "react-transform-hmr": "^1.0.4"
+  },
+  "jest": {
+    "setupFiles": [
+      "./test-env.js"
+    ],
+    "testPathIgnorePatterns": [
+      "__tests__/mocks.js"
+    ],
+    "unmockedModulePathPatterns": [
+      "node_modules/react/",
+      "node_modules/enzyme/"
+    ]
   }
 }
