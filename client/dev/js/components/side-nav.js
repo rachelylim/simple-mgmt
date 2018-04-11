@@ -36,6 +36,14 @@ const FilterHeader = styled.h3`
 `;
 
 class SideNav extends Component {
+  static get propTypes() {
+    return {
+      filter: PropTypes.string,
+      setFilter: PropTypes.func,
+      openTaskCreator: PropTypes.func,
+    };
+  }
+
   constructor(props) {
     super(props);
     this.state = {

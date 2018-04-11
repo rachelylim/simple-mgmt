@@ -12,6 +12,17 @@ const DateCompleteWrapper = styled.div`
 `;
 
 class TaskDetailsModal extends Component {
+  static get propTypes() {
+    return {
+      closeModal: PropTypes.func,
+      complete: PropTypes.bool,
+      deadline: PropTypes.string,
+      description: PropTypes.string,
+      name: PropTypes.string,
+      updateTask: PropTypes.func,
+    };
+  }
+
   closeModal = () => {
     this.props.closeModal && this.props.closeModal();
   }

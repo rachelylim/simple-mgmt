@@ -17,6 +17,14 @@ const TaskWrapper = styled.div`
 `;
 
 class List extends Component {
+  static get propTypes() {
+    return {
+      tasks: PropTypes.array,
+      removeTask: PropTypes.func,
+      updateTask: PropTypes.func,
+    };
+  }
+
   constructor(props) {
     super(props);
     const { filter, tasks } = props;
@@ -31,7 +39,7 @@ class List extends Component {
     if (filter === 'completed') {
       return tasks.filter(task => task.complete);
     } else if (filter === 'due-soon') {
-      return tasks.filter(task => task.dueSoon);
+      return tasks.filter(task => task.dueSoon && !task.complete);
     } else if (filter === 'overdue') {
       return tasks.filter(task => task.overdue && !task.complete);
     } else {

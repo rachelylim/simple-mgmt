@@ -15,6 +15,18 @@ const Wrapper = styled.div`
 `;
 
 class App extends Component {
+  static get propTypes() {
+    return {
+      tasks: PropTypes.array,
+      onCreateTask: PropTypes.func,
+      onRemoveTask: PropTypes.func,
+      onSetTasks: PropTypes.func,
+      onSetFilter: PropTypes.func,
+      openTaskCreator: PropTypes.func,
+      onUpdateTaskCompletion: PropTypes.func,
+    };
+  }
+
   constructor(props) {
     super(props);
     this.state = { creatingTask: false };

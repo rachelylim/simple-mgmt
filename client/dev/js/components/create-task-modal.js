@@ -14,6 +14,13 @@ const DateSaveWrapper = styled.div`
 `;
 
 class CreateTaskModal extends Component {
+  static get propTypes() {
+    return {
+      closeModal: PropTypes.func,
+      createTask: PropTypes.func,
+    };
+  }
+
   constructor(props) {
     super(props);
     this.state = { name: '' };

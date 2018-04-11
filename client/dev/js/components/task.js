@@ -36,6 +36,17 @@ const TaskName = styled.p`
 `;
 
 class Task extends Component {
+  static get propTypes() {
+    return {
+      complete: PropTypes.bool,
+      deadline: PropTypes.string,
+      description: PropTypes.string,
+      name: PropTypes.string,
+      removeTask: PropTypes.func,
+      updateTask: PropTypes.func,
+    };
+  }
+
   constructor(props) {
     super(props);
     this.state = {
