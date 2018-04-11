@@ -86,7 +86,7 @@ class Task extends Component {
           <Checkbox onchange={this.updateTask} checked={this.props.complete} />
           <TaskName onClick={this.toggleSelection(true)}>{this.props.name}</TaskName>
         </TaskWrapper>
-        <RemoveButton onClick={this.removeTask}>[ Remove ]</RemoveButton>
+        <RemoveButton onClick={this.removeTask} className='remove-button'>[ Remove ]</RemoveButton>
       </Wrapper>
     );
   }

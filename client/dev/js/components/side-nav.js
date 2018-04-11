@@ -58,7 +58,7 @@ class SideNav extends Component {
         <FilterHeader>Filters:</FilterHeader>
         {TASK_FILTERS.map((slug, id) => (
           <FilterWrapper key={id} slug={slug}>
-            <Checkbox onchange={this.filter(slug)} checked={this.state.filter === slug} />
+            <Checkbox onchange={this.filter(slug)} checked={this.state.filter === slug} id={slug} />
             <FilterName>{capitalize(slug.split('-').join(' '))}</FilterName>
           </FilterWrapper>
         ))}

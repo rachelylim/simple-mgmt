@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { createTask, setTasks, updateTask, setFilter, removeTask } from './actions';
 
-import App from '../components/App';
+import App from '../components/app';
 
 const mapStateToProps = state => ({
   filter: state.filter,

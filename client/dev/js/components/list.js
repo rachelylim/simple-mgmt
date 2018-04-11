@@ -20,28 +20,23 @@ class List extends Component {
   constructor(props) {
     super(props);
     const { filter, tasks } = props;
-    this.state = { filteredTasks: props.tasks };
+    this.state = { filteredTasks: this.filterTasks(props) };
   }
 
   componentWillReceiveProps(nextProps) {
-    const { filter, tasks } = nextProps;
-    this.filterTasks(filter, tasks);
+    this.setState({ filteredTasks: this.filterTasks(nextProps) });
   }
 
-  filterTasks(filter, tasks) {
-    let filteredTasks;
-
+  filterTasks({ filter, tasks }) {
     if (filter === 'completed') {
-      filteredTasks = tasks.filter(task => task.complete);
+      return tasks.filter(task => task.complete);
     } else if (filter === 'due-soon') {
-      filteredTasks = tasks.filter(task => task.dueSoon);
+      return tasks.filter(task => task.dueSoon);
     } else if (filter === 'overdue') {
-      filteredTasks = tasks.filter(task => task.overdue);
+      return tasks.filter(task => task.overdue && !task.complete);
     } else {
-      filteredTasks = tasks;
+      return tasks;
     }
-
-    this.setState({ filteredTasks });
   }
 
   renderTasks() {

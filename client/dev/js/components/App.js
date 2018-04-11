@@ -54,9 +54,8 @@ class App extends Component {
           filter={this.props.filter}
         />
         <List
-          filter={this.props.filter}
+          {...this.props}
           removeTask={this.removeTask}
-          tasks={this.props.tasks}
           updateTask={this.updateTask}
         />
         {this.state.creatingTask &&
