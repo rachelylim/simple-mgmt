@@ -19,16 +19,16 @@ A simple task management app using React, Redux, and Docker. React components ar
 6. Open task for more details.
 
 ## React Components
-### `TaskListContainer` - Connects redux to `App` component with dispatch functions to create, set, update, filter, and remove tasks.
-### `App` - Parent component holding the `List` and `SideNav` components.
-### `SideNav` - A menu component that holds a button to create a new task and the filter options, which also acts as a color key to visually identify tasks that are `complete`, `due soon`, or `overdue`.
-### `List` - Component that holds all tasks returned from the database.
-### `Task` - Component displaying information about the task. It has two states: the simple display state displays the name, a checkbox indicating if the task is complete or not, and a remove button. The outline of the task component is colored by a related filter. Clicking on this component opens a modal (`TaskDetailModal`) with more details about the task, such as its description and deadline. There is also a button to mark the task complete or incomplete.
-### `CreateTaskModal` - a modal that opens when you click the button to create a task.
-### `Modal` - a simple component used as a pattern/base for more complex modals, such as the `TaskDetailModal` and `CreateTaskModal`.
-### `Input` - a styled input field
-### `Checkbox` - a styled checkbox
-### `Button` -  a styled button
+- `TaskListContainer` - Connects redux to `App` component with dispatch functions to create, set, update, filter, and remove tasks.
+- `App` - Parent component holding the `List` and `SideNav` components.
+- `SideNav` - A menu component that holds a button to create a new task and the filter options, which also acts as a color key to visually identify tasks that are `complete`, `due soon`, or `overdue`.
+- `List` - Component that holds all tasks returned from the database.
+- `Task` - Component displaying information about the task. It has two states: the simple display state displays the name, a checkbox indicating if the task is complete or not, and a remove button. The outline of the task component is colored by a related filter. Clicking on this component opens a modal (`TaskDetailModal`) with more details about the task, such as its description and deadline. There is also a button to mark the task complete or incomplete.
+- `CreateTaskModal` - a modal that opens when you click the button to create a task.
+- `Modal` - a simple component used as a pattern/base for more complex modals, such as the `TaskDetailModal` and `CreateTaskModal`.
+- `Input` - a styled input field
+- `Checkbox` - a styled checkbox
+- `Button` -  a styled button
 
 
 ## Redux Actions and Reducers
