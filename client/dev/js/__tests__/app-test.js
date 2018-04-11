@@ -1,8 +1,7 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 
 import App from '../components/app';
-import List from '../components/list';
 import { defaultProps, filterProps } from './mocks';
 
 describe('Simple Task Management App', () => {
@@ -27,6 +26,5 @@ describe('Simple Task Management App', () => {
     it('can filter for only completed tasks', () => {
       expect(numberOfTasks > numberOfRenderedTasks).toBeTruthy();
     });
-  })
-
-})
+  });
+});
